@@ -25,7 +25,7 @@ SECRET_KEY = 'd=ctt@c!_==z_3g!$li($i9iy(pmzbh1e)5ew$reo43cq^^)(s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.33.11"]
 
 
 # Application definition
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'floppyforms',
+    'mapwidgets',
+    'locations'
 ]
 
 MIDDLEWARE = [
@@ -72,11 +76,17 @@ WSGI_APPLICATION = 'fixme.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+#CREATE USER 'devops'@'localhost' IDENTIFIED BY 'hzLRbiZ4Pwo&&4s';
+#GRANT ALL PRIVILEGES ON *.* TO 'devops'@'localhost';
+#FLUSH PRIVILEGES;
+#admin:IvaRbeVAaQdseeK
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.mysql', 
+        'USER': 'devops',
+        'NAME': 'devops',
+        'PASSWORD': 'hzLRbiZ4Pwo&&4s',
     }
 }
 
